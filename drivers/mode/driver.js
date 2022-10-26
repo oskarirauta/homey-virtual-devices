@@ -8,13 +8,10 @@ class ModeDriver extends Homey.Driver {
   onInit() {
 		this.log('Initialized driver for Modes');
 
-    var triggerDeviceOn  = new Homey.FlowCardTriggerDevice('mode_on');
-    triggerDeviceOn.register();
-    var triggerDeviceOff = new Homey.FlowCardTriggerDevice('mode_off');
-    triggerDeviceOff.register();
-    var triggerDeviceChanged = new Homey.FlowCardTriggerDevice('mode_changed');
-    triggerDeviceChanged.register();
-
+    var triggerDeviceOn  = this.homey.flow.getDeviceTriggerCard('mode_on');
+    var triggerDeviceOff = this.homey.flow.getDeviceTriggerCard('mode_off');
+    var triggerDeviceChanged = this.homey.flow.getDeviceTriggerCard('mode_changed');
+    
     this.registerFlowCardCondition('mode'); //deprecated
 
     this.registerFlowCardAction('mode_action_on', true, [triggerDeviceOn, triggerDeviceChanged]); //deprecated
@@ -23,9 +20,9 @@ class ModeDriver extends Homey.Driver {
     this.registerFlowCardAction('mode_state_off', false, []);
 	}
 
-  onPair( socket ) {
+  onPair( session ) {
     let pairingDevice = {
-      "name": Homey.__( 'pair.default.name.mode' ),
+      "name": this.homey.__( 'pair.default.name.mode' ),
       "settings": {},
       "data": {
         id: guid(),
@@ -35,23 +32,23 @@ class ModeDriver extends Homey.Driver {
       capabilities: [ "onoff" ]
     };
 
-    socket.on('log', function( msg, callback ) {
+    session.setHandler('log', ( msg ) => {
         console.log(msg);
-        callback( null, 'ok' );
+        return 'ok';
     });
 
-    socket.on('setName', function( data, callback ) {
+    session.setHandler('setName', ( data )=> {
         console.log('setName: ' + data);
         pairingDevice.name = data.name;
         console.log('pairingDevice: ' + JSON.stringify(pairingDevice));
-        callback( null, pairingDevice );
+        return pairingDevice;
     });
 
-    socket.on('getPairingDevice', function( data, callback ) {
-        callback( null, pairingDevice );
+    session.setHandler('getPairingDevice', ( data )=> {
+        return pairingDevice;
     });
 
-    socket.on('getIcons', function( data, callback ) {
+    session.setHandler('getIcons', ( data )=> {
         var device_data = [
 					getIconNameAndLocation('mode'),
           getIconNameAndLocation('house'),
@@ -70,21 +67,21 @@ class ModeDriver extends Homey.Driver {
 	        getIconNameAndLocation('off'),
 	    ]
 
-        callback( null, device_data );
+        return device_data;
     });
 
-    socket.on('setIcon', function( data, callback ) {
+    session.setHandler('setIcon', ( data )=> {
         console.log('setIcon: ' + data);
         pairingDevice.data.icon_name = data.icon.name;
         pairingDevice.icon = data.icon.location
-        if ( Homey.version == undefined ) {
+        if ( this.homey.version == undefined ) {
           pairingDevice.icon = DRIVER_LOCATION + "assets/" + data.icon.location
         }
         console.log('pairingDevice: ' + JSON.stringify(pairingDevice));
-        callback( null, pairingDevice );
+        return pairingDevice;
     });
 
-    socket.on('saveIcon', function(data, callback) {
+    session.setHandler('saveIcon', (data) => {
       try {
         console.log('saveIcon: ' + JSON.stringify(data));
         listFiles("./userdata");
@@ -94,15 +91,16 @@ class ModeDriver extends Homey.Driver {
         pairingDevice.data.icon = deviceIcon;
         pairingDevice.icon = deviceIcon
         console.log('pairingDevice: ' + JSON.stringify(pairingDevice));
-        callback( null, pairingDevice );
+        return pairingDevice;
 
       } catch (error) {
         console.log('saveIcon ERROR ' + JSON.stringify(error));
-        callback( error, pairingDevice );
+        throw error;
+        
       }
     });
 
-    socket.on('disconnect', function(){
+    session.setHandler('disconnect', ()=>{
         console.log('User aborted pairing, or pairing is finished');
         if( typeof pairingDevice.data.icon !== 'undefined' && pairingDevice.data.icon !== null 
             && pairingDevice.data.icon.startsWith("../userdata")) {
@@ -112,9 +110,8 @@ class ModeDriver extends Homey.Driver {
   }
 
   registerFlowCardCondition(card_name) {
-    let flowCardCondition = new Homey.FlowCardCondition(card_name);
+    let flowCardCondition = this.homey.flow.getConditionCard(card_name);
     flowCardCondition
-      .register()
       .registerRunListener(( args, state ) => {
         try {
           let device = validateItem('device', args.device);
@@ -134,9 +131,8 @@ class ModeDriver extends Homey.Driver {
   }
 
   registerFlowCardAction(card_name, newState, flow_triggers) {
-    let flowCardAction = new Homey.FlowCardAction(card_name);
+    let flowCardAction = this.homey.flow.getActionCard(card_name);
     flowCardAction
-      .register()
       .registerRunListener(( args, state ) => {
         try {
           let device = validateItem('device', args.device);

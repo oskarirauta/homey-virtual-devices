@@ -27,7 +27,7 @@ version 2: (0.6.4 - 0.7.6): Cleanup after switch to SDK2
   icon: DRIVER_LOCATION + "assets/" + details.icon.value,
 
 version 3: (0.8.0 - ): New pairing
-     name: Homey.__('pair.default.name.device'),
+     name: this.homey.__('pair.default.name.device'),
      "settings": {},
       "data": {
         id: guid(),
@@ -68,7 +68,7 @@ mode:
 
 
   version 3: (0.8.0 - ): New pairing
-      "name": Homey.__( 'pair.default.name.mode' ),
+      "name": this.homey.__( 'pair.default.name.mode' ),
       "settings": {},
       "data": {
         id: guid(),

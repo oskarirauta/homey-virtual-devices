@@ -23,12 +23,10 @@ class VirtualDevice extends Homey.Device {
     // });
     // this.log('state:       ', this.getState());
 
-    let thisDeviceChanged = new Homey.FlowCardTriggerDevice('press');
-    thisDeviceChanged.register();
-
-    let aVirtualDeviceChanged = new Homey.FlowCardTrigger('device_changed');
-		aVirtualDeviceChanged.register();
-
+    let thisDeviceChanged = this.homey.flow.getDeviceTriggerCard('press');
+    
+    let aVirtualDeviceChanged = this.homey.flow.getTriggerCard('device_changed');
+		
     // When capability is changed
     this.registerMultipleCapabilityListener(this.getCapabilities(), (changedCapabs, optsObj) => {
       this.log(this.getName() + ' -> Capability changed: ' + JSON.stringify(changedCapabs));

@@ -11,9 +11,9 @@ class VirtualDriver extends Homey.Driver {
     this.registerFlowCardAction_sensor('set_sensor_value', false);
 	}
 
-  onPair( socket ) {
+  onPair( session ) {
     let pairingDevice = {
-      name: Homey.__('pair.default.name.device'),
+      name: this.homey.__('pair.default.name.device'),
       settings: {},
       data: {
         id: guid(),
@@ -23,36 +23,36 @@ class VirtualDriver extends Homey.Driver {
       capabilitiesOptions: {}
     };
 
-    socket.on('log', function( data, callback ) {
+    session.setHandler('log', ( data ) => {
         console.log('log: ' + JSON.stringify(data));
-        callback( null, "ok" );
+        return "ok";
     });
 
-    socket.on('setClass', function( data, callback ) {
+    session.setHandler('setClass', ( data ) => {
         console.log('setClass: ' + data);
         pairingDevice.class = data.class;
         console.log('pairingDevice: ' + JSON.stringify(pairingDevice));
-        callback( null, pairingDevice );
+        return pairingDevice;
     });
 
-    socket.on('setName', function( data, callback ) {
+    session.setHandler('setName', ( data ) => {
         console.log('setName: ' + data);
         pairingDevice.name = data.name;
         console.log('pairingDevice: ' + JSON.stringify(pairingDevice));
-        callback( null, pairingDevice );
+        return pairingDevice;
     });
 
-    socket.on('getPairingDevice', function( data, callback ) {
-        callback( null, pairingDevice );
+    session.setHandler('getPairingDevice', ( data ) => {
+        return pairingDevice;
     });
 
-    socket.on('updateCapabilities', function( data, callback ) {
+    session.setHandler('updateCapabilities', ( data ) => {
       console.log('updateCapabilities: ' + JSON.stringify(data));
       pairingDevice.capabilities = data.capabilities;
-      callback( null, pairingDevice );
+      return pairingDevice;
     });
 
-    socket.on('updateCapabilitiesOptions', function( capabilityOptionChanges, callback ) {
+    session.setHandler('updateCapabilitiesOptions', ( capabilityOptionChanges) => {
       console.log('updateCapabilitiesOptions: ' + JSON.stringify(capabilityOptionChanges));
       Object.keys(capabilityOptionChanges).forEach( capability => {
         if ( Object.keys(capabilityOptionChanges[capability]).length === 0 ) {
@@ -65,10 +65,10 @@ class VirtualDriver extends Homey.Driver {
           })
         }
       })
-      callback( null, pairingDevice );
+      return pairingDevice;
     });
 
-    socket.on('getIcons', function( data, callback ) {
+    session.setHandler('getIcons', ( data ) => {
         var device_data = [
 	        getIconNameAndLocation('switch'),
 	        getIconNameAndLocation('light'),
@@ -94,21 +94,21 @@ class VirtualDriver extends Homey.Driver {
           getIconNameAndLocation('kettle'),
 	    ]
 
-        callback( null, device_data );
+        return device_data;
     });
 
-    socket.on('setIcon', function( data, callback ) {
+    session.setHandler('setIcon', ( data ) => {
         console.log('setIcon: ' + data);
         pairingDevice.data.icon = data.icon.location;
         pairingDevice.icon = data.icon.location
-        if ( Homey.version == undefined ) {
+        if ( this.homey.version == undefined ) {
           pairingDevice.icon = DRIVER_LOCATION + "assets/" + data.icon.location
         }
         console.log('pairingDevice: ' + JSON.stringify(pairingDevice));
-        callback( null, pairingDevice );
+        return pairingDevice;
     });
 
-    socket.on('saveIcon', function(data, callback) {
+    session.setHandler('saveIcon', function(data, callback) {
       try {
         console.log('saveIcon: ' + JSON.stringify(data));
         listFiles("./userdata");
@@ -117,15 +117,15 @@ class VirtualDriver extends Homey.Driver {
 
         pairingDevice.data.icon = deviceIcon;
         pairingDevice.icon = deviceIcon
-        callback( null, pairingDevice );
+        return pairingDevice;
 
       } catch (error) {
         console.log('saveIcon ERROR ' + JSON.stringify(error));
-        callback( error, pairingDevice );
+        throw  error;
       }
     });
 
-    socket.on('disconnect', function(){
+    session.setHandler('disconnect', function(){
         console.log("User aborted pairing, or pairing is finished");
         if( typeof pairingDevice.data.icon !== 'undefined' && pairingDevice.data.icon !== null 
             && pairingDevice.data.icon.startsWith("../userdata")) {
@@ -135,9 +135,8 @@ class VirtualDriver extends Homey.Driver {
   }
 
   registerFlowCardAction_sensor(card_name) {
-    let flowCardAction = new Homey.FlowCardAction(card_name);
+    let flowCardAction = this.homey.flow.getActionCard(card_name);
     flowCardAction
-      .register()
       .registerRunListener(( args, state ) => {
         try {
           this.log('args: ' + simpleStringify(args) );

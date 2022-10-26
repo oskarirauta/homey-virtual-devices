@@ -1,8 +1,9 @@
 {
   "id": "com.arjankranenburg.virtual",
-  "version": "0.9.5",
-  "compatibility": ">=1.5.0",
-  "sdk": 2,
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "brandColor": "#6720df",
   "description": {
     "en": "Virtual Devices to simulate 1 or more real devices",
     "nl": "Virtuele Apparaten om 1 of meerdere apparaten te simuleren"
@@ -40,6 +41,10 @@
       {
         "name": "Danee de Kruyff",
         "email": "daneedekruyff@outlook.com"
+      },
+      {
+        "name": "Arie J. Godschalk",
+        "email": "arie@qluster-it.nl"
       }
 
     ],
@@ -61,13 +66,13 @@
   "contributing": {
     "donate": {
       "paypal": {
-        "username": "ArjanKranenburg"
+        "username": "QlusterIT"
       }
     }
   },
-  "source": "https://github.com/ArjanKranenburg/virtual-devices",
+  "source": "https://bitbucket.org/QlusterIT/nl.qluster-it.virtualdevices/",
   "bugs": {
-        "url": "https://github.com/ArjanKranenburg/virtual-devices/issues"
+        "url": "https://bitbucket.org/QlusterIT/nl.qluster-it.virtualdevices/issues"
   },
   "athomForumDiscussionId": 3065,
   "homeyCommunityTopicId": 1723,

@@ -21,9 +21,8 @@ class ModeDevice extends Homey.Device {
     // this.log('capabilities:', JSON.stringify(this.getCapabilities()));
     this.log('state:       ', this.getState());
 
-    let thisMultiChanged = new Homey.FlowCardTriggerDevice('multi_changed');
-    thisMultiChanged.register();
-
+    let thisMultiChanged = this.homey.flow.getDeviceTriggerCard('multi_changed');
+    
     // When capability is changed
     this.registerMultipleCapabilityListener(this.getCapabilities(), (valueObj, optsObj) => {
       this.log(this.getName() + ' -> Capability changed: ' + JSON.stringify(valueObj));

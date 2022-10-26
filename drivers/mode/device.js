@@ -20,13 +20,10 @@ class ModeDevice extends Homey.Device {
     // this.log('capabilities:', JSON.stringify(this.getCapabilities()));
     // this.log('state:       ', this.getState());
 
-    let thisModeOn = new Homey.FlowCardTriggerDevice('mode_on');
-    thisModeOn.register();
-    let thisModeOff = new Homey.FlowCardTriggerDevice('mode_off');
-    thisModeOff.register();
-    let thisModeChanged = new Homey.FlowCardTriggerDevice('mode_changed');
-    thisModeChanged.register();
-
+    let thisModeOn = this.homey.flow.getDeviceTriggerCard('mode_on');
+    let thisModeOff = this.homey.flow.getDeviceTriggerCard('mode_off');
+    let thisModeChanged = this.homey.flow.getDeviceTriggerCard('mode_changed');
+    
     // When capability is changed
     this.registerMultipleCapabilityListener(this.getCapabilities(), (valueObj, optsObj) => {
       this.log(this.getName() + ' -> Capability changed: ' + JSON.stringify(valueObj));
