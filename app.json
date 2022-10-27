@@ -1,6 +1,6 @@
 {
   "id": "com.arjankranenburg.virtual",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#6720df",
@@ -29,8 +29,8 @@
     ]
   },
   "author": {
-    "name": "Arjan Kranenburg",
-    "email": "arjan.kranenburg@gmail.com"
+    "name": "Arie J. Godschalk",
+    "email": "arie@qluster-it.nl"
   },
   "contributors": {
     "developers": [
