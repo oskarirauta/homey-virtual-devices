@@ -1,6 +1,6 @@
 {
   "id": "com.arjankranenburg.virtual",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#6720df",
@@ -63,13 +63,19 @@
       }
     ]
   },
-  "contributing": {
-    "donate": {
-      "paypal": {
-        "username": "QlusterIT"
+	"contributing": {
+		"donate": {
+			"paypal": {
+				"username": "QlusterIT"
+			},
+      "patreon": {
+				"username": "QlusterIT"
+			},
+      "githubSponsors": {
+        "username": "XeroxQ"
       }
-    }
-  },
+		}
+	},
   "source": "https://bitbucket.org/QlusterIT/nl.qluster-it.virtualdevices/",
   "bugs": {
         "url": "https://bitbucket.org/QlusterIT/nl.qluster-it.virtualdevices/issues"

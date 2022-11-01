@@ -22,5 +22,8 @@
   },
   "1.0.1": {
     "en": "Improved: Updated to SDK3."
+  },
+  "1.0.2": {
+    "en": "Added: Contribution options: Patreon and GithubSponsors (with PayPal already available)."
   }
 }
