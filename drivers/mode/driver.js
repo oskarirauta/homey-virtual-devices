@@ -143,7 +143,9 @@ class ModeDriver extends Homey.Driver {
               .catch(this.error);
 
             for (var i = 0; i < flow_triggers.length; i++) {
-              flow_triggers[i].trigger( device, {}, newState ) // Fire and forget
+              // flow_triggers[i].trigger( device, {}, newState ) // Fire and forget
+              //   .catch( this.error );
+              flow_triggers[i].trigger( device, {}, null ) // Fire and forget
                 .catch( this.error );
             }
           }
@@ -151,7 +153,7 @@ class ModeDriver extends Homey.Driver {
           return Promise.resolve( true );
         }
         catch(error) {
-          this.log('Device action called with missing information: ' + error.message)
+          this.log('Device action called with missing information: ' + error.message);
           return Promise.reject(error);
         }
       })

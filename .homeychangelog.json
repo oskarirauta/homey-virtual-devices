@@ -25,5 +25,8 @@
   },
   "1.0.2": {
     "en": "Added: Contribution options: Patreon and GithubSponsors (with PayPal already available)."
+  },
+  "1.0.3": {
+    "en": "Resolved: Deprecated card issues."
   }
 }

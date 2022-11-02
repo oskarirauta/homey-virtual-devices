@@ -248,7 +248,7 @@ class MultiDriver extends Homey.Driver {
           device.setMultiState(newState);
 
           if (flow_trigger) {
-            flow_trigger.trigger( device, {}, newState ) // Fire and forget
+            flow_trigger.trigger( device, {}, null) //, newState ) // Fire and forget
               .catch( this.error );
           }
 

@@ -35,10 +35,10 @@ class ModeDevice extends Homey.Device {
       });
 
       if ( valueObj.onoff ) {
-        thisModeOn.trigger( this, {}, valueObj ) // Fire and forget
+        thisModeOn.trigger( this, {}, null ) // , valueObj ) // Fire and forget
           .catch( this.error );
       } else {
-        thisModeOff.trigger( this, {}, valueObj ) // Fire and forget
+        thisModeOff.trigger( this, {}, null ) // , valueObj ) // Fire and forget
           .catch( this.error );
       }
       return Promise.resolve();

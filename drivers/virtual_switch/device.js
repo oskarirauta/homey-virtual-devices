@@ -44,15 +44,15 @@ class VirtualDevice extends Homey.Device {
 
         if (capability === 'dim' && this.hasCapability( 'onoff' )) {
           if ( value > 0 ) {
-            this.setCapabilityValue( 'onoff', true )
+            this.setCapabilityValue( 'onoff', true );
           } else {
-            this.setCapabilityValue( 'onoff', false )
+            this.setCapabilityValue( 'onoff', false );
           }
         }
 
         process.nextTick(async () => {
           await sleep(100);
-          thisDeviceChanged.trigger( this, {}, changedCapabs )
+          thisDeviceChanged.trigger( this, {}, null ) // , changedCapabs )
             .catch( this.error );
         });
 
@@ -60,7 +60,7 @@ class VirtualDevice extends Homey.Device {
             'device': this.getName(),
             'variable': capability,
             'value': '' + value
-        }
+        };
         aVirtualDeviceChanged.trigger( tokens ) // Fire and forget
           .catch( this.error )
       }

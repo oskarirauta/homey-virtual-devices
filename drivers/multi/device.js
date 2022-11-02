@@ -41,7 +41,7 @@ class ModeDevice extends Homey.Device {
 
       process.nextTick(async () => {
         await sleep(100);
-        thisMultiChanged.trigger( this, {}, valueObj ) // Fire and forget
+        thisMultiChanged.trigger( this, {}, null ) // , valueObj ) // Fire and forget
           .catch( this.error );
       });
 
