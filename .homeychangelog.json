@@ -31,5 +31,8 @@
   },
   "1.0.4": {
     "en": "Improved: Target/measure temperature adjustments: Min (-100 min, 50 max, 0.1 step), Max (0 min, 200 max, 0.1 step), Step (0 min, 5 max, 0.1 step) and Decimals (0 min, 5 max, 0.1 step)."
+  },
+  "1.1.0": {
+    "en": "Improved: Works with Early 2023!"
   }
 }

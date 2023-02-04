@@ -100,9 +100,9 @@ class VirtualDriver extends Homey.Driver {
     session.setHandler('setIcon', ( data ) => {
         console.log('setIcon: ' + data);
         pairingDevice.data.icon = data.icon.location;
-        pairingDevice.icon = data.icon.location
+        pairingDevice.icon = data.icon.location;
         if ( this.homey.version == undefined ) {
-          pairingDevice.icon = DRIVER_LOCATION + "assets/" + data.icon.location
+          pairingDevice.icon = DRIVER_LOCATION + "assets/" + data.icon.location;
         }
         console.log('pairingDevice: ' + JSON.stringify(pairingDevice));
         return pairingDevice;
@@ -111,12 +111,12 @@ class VirtualDriver extends Homey.Driver {
     session.setHandler('saveIcon', function(data, callback) {
       try {
         console.log('saveIcon: ' + JSON.stringify(data));
-        listFiles("./userdata");
+        listFiles("/userdata");
         uploadIcon(data, pairingDevice.data.id);
         var deviceIcon = "../../../userdata/"+ pairingDevice.data.id +".svg";
 
         pairingDevice.data.icon = deviceIcon;
-        pairingDevice.icon = deviceIcon
+        pairingDevice.icon = deviceIcon;
         return pairingDevice;
 
       } catch (error) {
@@ -127,9 +127,8 @@ class VirtualDriver extends Homey.Driver {
 
     session.setHandler('disconnect', function(){
         console.log("User aborted pairing, or pairing is finished");
-        if( typeof pairingDevice.data.icon !== 'undefined' && pairingDevice.data.icon !== null 
-            && pairingDevice.data.icon.startsWith("../userdata")) {
-          removeIcon(pairingDevice.data.icon)
+        if( typeof pairingDevice.data.icon !== 'undefined' && pairingDevice.data.icon !== null && pairingDevice.data.icon.indexOf("../userdata/")>-1) {
+          removeIcon(pairingDevice.data.icon);
         }
     })
   }

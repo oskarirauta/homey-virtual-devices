@@ -84,12 +84,12 @@ class ModeDriver extends Homey.Driver {
     session.setHandler('saveIcon', (data) => {
       try {
         console.log('saveIcon: ' + JSON.stringify(data));
-        listFiles("./userdata");
+        listFiles("/userdata");
         uploadIcon(data, pairingDevice.data.id);
         var deviceIcon = "../../../userdata/"+ pairingDevice.data.id +".svg";
 
         pairingDevice.data.icon = deviceIcon;
-        pairingDevice.icon = deviceIcon
+        pairingDevice.icon = deviceIcon;
         console.log('pairingDevice: ' + JSON.stringify(pairingDevice));
         return pairingDevice;
 
@@ -102,11 +102,10 @@ class ModeDriver extends Homey.Driver {
 
     session.setHandler('disconnect', ()=>{
         console.log('User aborted pairing, or pairing is finished');
-        if( typeof pairingDevice.data.icon !== 'undefined' && pairingDevice.data.icon !== null 
-            && pairingDevice.data.icon.startsWith("../userdata")) {
-          removeIcon(pairingDevice.data.icon)
+        if( typeof pairingDevice.data.icon !== 'undefined' && pairingDevice.data.icon !== null && pairingDevice.data.icon.indexOf("../userdata/")>-1) {
+          removeIcon(pairingDevice.data.icon);
         }
-    })
+    });
   }
 
   registerFlowCardCondition(card_name) {

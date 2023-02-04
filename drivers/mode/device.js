@@ -55,7 +55,7 @@ class ModeDevice extends Homey.Device {
     this.log('device mode: ' + this.getName());
 
     if( typeof this.getData().icon !== 'undefined' && this.getData().icon !== null 
-        && this.getData().icon.startsWith("../../../userdata")) {
+        && this.getData().icon.indexOf("../userdata/")>-1) {
       removeIcon(this.getData().icon)
     }
   }
