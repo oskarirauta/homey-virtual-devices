@@ -130,7 +130,8 @@ var devices = {
       "measure_temperature"
     ],
     "defaultCapabilities": [
-      "target_temperature"
+      "target_temperature",
+      "measure_temperature"
     ]
   },
   "sensor": {

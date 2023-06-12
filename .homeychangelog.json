@@ -40,5 +40,11 @@
   },
   "1.1.2": {
     "en": "Improved and now correct: Target/measure temperature adjustments: Min (-200 min, 500 max, 0.1 step), Max (-200 min, 500 max, 0.1 step), Step (0 min, 5 max, 0.1 step) and Decimals (0 min, 5 max, 0.1 step)."
+  },
+  "1.2.0": {
+    "en": "Improved: New flowcard in which you select an existing sensor/capability, instead of typing the sensorname."
+  },
+  "1.2.1": {
+    "en": "Improved: New flowcard in which you select an existing sensor/capability, instead of typing the sensorname."
   }
 }

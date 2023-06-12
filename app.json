@@ -1,6 +1,6 @@
 {
   "id": "com.arjankranenburg.virtual",
-  "version": "1.1.2",
+  "version": "1.2.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#6720df",
@@ -315,6 +315,47 @@
               "nl": "Sensor",
               "de": "Sensor",
               "no": "Sensor"
+            }
+          },
+          {
+            "name": "value",
+            "type": "text",
+            "placeholder": {
+              "en": "Value",
+              "nl": "Waarde",
+              "de": "Wert",
+              "no": "Verdi"
+            }
+          },
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=virtual_switch"
+          }
+        ]
+      },{
+        "id": "set_sensor_value_oc",
+        "title": {
+          "en": "Set a virtual sensor value",
+          "nl": "Zet de waarde van een virtuele sensor",
+          "de": "Lege einen virtuellen Sensorwert fest",
+          "no": "Sett en virtuell sensor verdi"
+        },
+        "titleFormatted": {
+          "en": "Set [[sensor]] to [[value]]",
+          "nl": "Stel [[sensor]] in op [[value]]",
+          "de": "Setzen Sie [[sensor]] auf [[value]]",
+          "no": "Sett [[sensor]] til [[value]]"
+        },
+        "args": [
+          {
+            "name": "sensor",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Virtual Sensor",
+              "nl": "Virtuele Sensor",
+              "de": "Virtuellen Sensorwert",
+              "no": "Virtuell Sensor"
             }
           },
           {
