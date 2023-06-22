@@ -126,11 +126,16 @@ class VirtualDriver extends Homey.Driver {
       }
     });
 
-    session.setHandler('disconnect', function () {
+    session.setHandler('disconnect', () => {
       console.log("User aborted pairing, or pairing is finished");
-      if (typeof pairingDevice.data.icon !== 'undefined' && pairingDevice.data.icon !== null && pairingDevice.data.icon.indexOf("../userdata/") > -1) {
-        removeIcon(pairingDevice.data.icon);
-      }
+      
+      this.homey.setTimeout(() => {
+        let devices = this.getDevices();
+        if (typeof pairingDevice.data.icon !== 'undefined' && pairingDevice.data.icon !== null && pairingDevice.data.icon.indexOf("../userdata/") > -1 && !devices.find(x => x.getData().icon == pairingDevice.data.icon)) {
+          removeIcon(pairingDevice.data.icon);
+        }
+      }, 10000);
+      return true;
     })
   }
 
@@ -169,12 +174,12 @@ class VirtualDriver extends Homey.Driver {
         }
       });
     if (oc) flowCardAction.registerArgumentAutocompleteListener('sensor', async (query, args) => {
-      
+
       let caps = args.device.getCapabilities();
-      return caps.map(x=>{
+      return caps.map(x => {
         return {
-          name:x,
-          id:x
+          name: x,
+          id: x
         }
       });
     });

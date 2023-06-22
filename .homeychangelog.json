@@ -46,5 +46,8 @@
   },
   "1.2.1": {
     "en": "Improved: New flowcard in which you select an existing sensor/capability, instead of typing the sensorname."
+  },
+  "1.2.2": {
+    "en": "Resolved: Custom icons were deleted after creation of a new VD."
   }
 }

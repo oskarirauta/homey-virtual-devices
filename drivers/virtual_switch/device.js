@@ -79,8 +79,7 @@ class VirtualDevice extends Homey.Device {
   onDeleted() {
     this.log('device deleted: ' + this.getName());
     
-    if( typeof this.getData().icon !== 'undefined' && this.getData().icon !== null 
-        && this.getData().icon.indexOf("../userdata/")>-1) {
+    if( typeof this.getData().icon !== 'undefined' && this.getData().icon !== null && this.getData().icon.indexOf("../userdata/")>-1) {
       removeIcon(this.getData().icon)
     }
   }
