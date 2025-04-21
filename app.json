@@ -1,6 +1,6 @@
 {
-  "id": "com.arjankranenburg.virtual",
-  "version": "1.2.3",
+  "id": "com.oskarirauta.virtual2",
+  "version": "1.2.4",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#6720df",
@@ -16,7 +16,7 @@
   },
   "tags": {
     "en": [
-      "virtual device" 
+      "virtual device"
     ],
     "nl": [
       "virtuele apparaten"

@@ -8,7 +8,7 @@ const fs = require('fs');
 //paired and active devices in your driver's memory.
 var devices = {};
 
-class VirtualDevice extends Homey.Device {
+class VirtualDevice2 extends Homey.Device {
   onInit() {
     this.log('Virtual Device (' + this.getName() + ') initialized');
 
@@ -59,7 +59,8 @@ class VirtualDevice extends Homey.Device {
         let tokens = {
             'device': this.getName(),
             'variable': capability,
-            'value': '' + value
+            'value': '' + value,
+            'zone': this.zone
         };
         aVirtualDeviceChanged.trigger( tokens ) // Fire and forget
           .catch( this.error )
@@ -105,4 +106,4 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-module.exports = VirtualDevice;
+module.exports = VirtualDevice2;

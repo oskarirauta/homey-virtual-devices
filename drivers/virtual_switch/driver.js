@@ -2,9 +2,9 @@
 
 const Homey = require('homey');
 const fs = require('fs');
-const DRIVER_LOCATION = "/app/com.arjankranenburg.virtual/drivers/virtual_switch/";
+const DRIVER_LOCATION = "/app/com.oskarirauta.virtual2/drivers/virtual_switch/";
 
-class VirtualDriver extends Homey.Driver {
+class VirtualDriver2 extends Homey.Driver {
   onInit() {
     this.log('Initialized driver for Virtual Devices');
 
@@ -186,7 +186,7 @@ class VirtualDriver extends Homey.Driver {
   }
 }
 
-module.exports = VirtualDriver;
+module.exports = VirtualDriver2;
 
 function guid() {
   function s4() {

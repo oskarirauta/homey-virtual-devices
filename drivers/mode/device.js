@@ -8,7 +8,7 @@ const fs = require('fs');
 //paired and active devices in your driver's memory.
 var devices = {};
 
-class ModeDevice extends Homey.Device {
+class ModeDevice2 extends Homey.Device {
   onInit() {
     this.log('Mode device (' + this.getName() + ') inititialized');
 

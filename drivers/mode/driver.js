@@ -2,9 +2,9 @@
 
 const Homey = require('homey');
 const fs = require('fs');
-const DRIVER_LOCATION = "/app/com.arjankranenburg.virtual/drivers/mode/";
+const DRIVER_LOCATION = "/app/com.oskarirauta.virtual2/drivers/mode/";
 
-class ModeDriver extends Homey.Driver {
+class ModeDriver2 extends Homey.Driver {
   onInit() {
     this.log('Initialized driver for Modes');
 
@@ -163,7 +163,7 @@ class ModeDriver extends Homey.Driver {
   }
 }
 
-module.exports = ModeDriver;
+module.exports = ModeDriver2;
 
 function guid() {
   function s4() {

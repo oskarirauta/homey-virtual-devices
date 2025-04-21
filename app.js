@@ -2,7 +2,7 @@
 
 const Homey = require('homey');
 
-class VirtualDevices extends Homey.App {
+class VirtualDevices2 extends Homey.App {
 
 	onInit() {
 
@@ -18,4 +18,4 @@ class VirtualDevices extends Homey.App {
 	}
 }
 
-module.exports = VirtualDevices;
+module.exports = VirtualDevices2;

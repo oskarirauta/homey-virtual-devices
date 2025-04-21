@@ -1,9 +1,9 @@
 'use strict';
 
 const Homey = require('homey');
-const DRIVER_LOCATION = "/app/com.arjankranenburg.virtual/drivers/multi/";
+const DRIVER_LOCATION = "/app/com.oskarirauta.virtual2/drivers/multi/";
 
-class MultiDriver extends Homey.Driver {
+class MultiDriver2 extends Homey.Driver {
 
   onInit() {
 		this.log('Initialized driver for Multi-Modes');
@@ -262,7 +262,7 @@ class MultiDriver extends Homey.Driver {
   }
 }
 
-module.exports = MultiDriver;
+module.exports = MultiDriver2;
 
 function guid() {
   function s4() {
