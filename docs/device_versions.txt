@@ -1,6 +1,6 @@
 Describes the structure of the devices added in different versions of the Application.
 
-virtual_switch:
+virtual_switch2:
   version 1 (0.4.0 - 0.6.3?): Initial
     name: details.deviceName.value,
     data: {
@@ -39,7 +39,7 @@ version 3: (0.8.0 - ): New pairing
     };
 
 
-mode:
+mode2:
   version 1: (0.4.0 - 0.6.3?): Initial
     name: details.deviceName.value,
     data: {

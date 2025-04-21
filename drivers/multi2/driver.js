@@ -1,7 +1,7 @@
 'use strict';
 
 const Homey = require('homey');
-const DRIVER_LOCATION = "/app/com.oskarirauta.virtual2/drivers/multi/";
+const DRIVER_LOCATION = "/app/com.oskarirauta.virtual2/drivers/multi2/";
 
 class MultiDriver2 extends Homey.Driver {
 
@@ -109,7 +109,7 @@ class MultiDriver2 extends Homey.Driver {
 
     session.setHandler('setIcon', ( data ) => {
         console.log('setIcon: ' + JSON.stringify(data));
-        mainComponent.options.icons.multi_state = 'drivers/multi/assets/' + data.icon.location
+        mainComponent.options.icons.multi_state = 'drivers/multi2/assets/' + data.icon.location
         pairingDevice.data.icon_name = data.icon.name
         pairingDevice.icon = data.icon.location
         if ( this.homey.version == undefined ) {

@@ -14,8 +14,8 @@
   }
 
   .vd-icon-tile {
-    /* height: 60px; */
-    position: relative; 
+      /* height: 60px; */
+      position: relative; 
     padding: 5px; 
     height: 30px; 
     margin-bottom: 5px;
@@ -29,12 +29,13 @@
   #icon_list {
     margin: 0px;
   }
-
+  
   .form-group {
     width: 100%;
     display: block;
     margin-bottom: 12px;
   }
+
   #preview-outerframe {
     display: none;
     width: 100%;
@@ -67,8 +68,8 @@
 
   var imgBase64 = '';
 
-  Homey.setTitle(__('pair.title.device'));
-
+  Homey.setTitle(__('pair.title.mode'));
+ 
   Homey.emit('getIcons', null, function (err, icons) {
     if (err) {
       console.log(err);
@@ -81,7 +82,7 @@
         icons: icons
       },
       methods:{
-        setIcon(icon) {
+        addIcon(icon) {
           Homey.emit('setIcon', {'icon': icon}, function (err, result) {
             if(err){console.log(err); return;}
             Homey.nextView();
@@ -89,6 +90,7 @@
         }
       }
     })
+
   })
 
   Homey.emit('getPairingDevice', null, function (err, device) {
@@ -97,7 +99,7 @@
       return;
     }
     console.log(device);
-    Homey.setTitle(__('pair.title.device') + ' ' + device.name);
+    Homey.setTitle(__('pair.title.mode') + ' ' + device.name);
   })
 
   $('#save-icon').click(function() {
@@ -149,11 +151,11 @@
       :cols="3"
       :gutter="10"
       >
-      <div v-for="(item, index) in icons" :key="index" v-on:click='setIcon(item)'>
+      <div v-for="(item, index) in icons" :key="index" v-on:click='addIcon(item)'>
         <label for="icon" class="vd-icon-tile">
-          <span class="vd-icon" v-bind:style="{WebkitMaskImage: 'url(/app/com.arjankranenburg.virtual/drivers/virtual_switch/assets/' + item.location + ')'}"></span>
+          <span class="vd-icon" v-bind:style="{WebkitMaskImage: 'url(/app/com.oskarirauta.virtual2/drivers/mode2/assets/' + item.location + ')'}"></span>
         </label>
       </div>
     </masonry>
-  </ul>  
+  </ul>
 </div>

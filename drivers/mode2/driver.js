@@ -2,7 +2,7 @@
 
 const Homey = require('homey');
 const fs = require('fs');
-const DRIVER_LOCATION = "/app/com.oskarirauta.virtual2/drivers/mode/";
+const DRIVER_LOCATION = "/app/com.oskarirauta.virtual2/drivers/mode2/";
 
 class ModeDriver2 extends Homey.Driver {
   onInit() {

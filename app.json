@@ -9,23 +9,23 @@
     "nl": "Virtuele Apparaten om 1 of meerdere apparaten te simuleren"
   },
   "name": {
-    "en": "Virtual Devices",
-    "nl": "Virtuele Apparaten",
-    "de": "Virtuelle Geräte",
-    "no": "Virtuelle Enheter"
+    "en": "Virtual Devices2",
+    "nl": "Virtuele Apparaten2",
+    "de": "Virtuelle Geräte2",
+    "no": "Virtuelle Enheter2"
   },
   "tags": {
     "en": [
-      "virtual device"
+      "virtual device2"
     ],
     "nl": [
-      "virtuele apparaten"
+      "virtuele apparaten2"
     ],
     "de": [
-      "virtuelle Geräte"
+      "virtuelle Geräte2"
     ],
     "no": [
-      "virtuelle enheter"
+      "virtuelle enheter2"
     ]
   },
   "author": {
@@ -166,6 +166,15 @@
               "de": "Virtuelle Leuchte",
               "no": "Virtuell lampe"
             }
+          },
+          {
+            "name": "zone",
+            "title": {
+              "en": "zone"
+            },
+            "example": {
+              "en": "zone id of device"
+            }
           }
         ]
       },
@@ -181,7 +190,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=virtual_switch"
+            "filter": "driver_id=virtual_switch2"
           }
         ]
       },
@@ -197,7 +206,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=mode"
+            "filter": "driver_id=mode2"
           }
         ]
       },
@@ -213,7 +222,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=mode"
+            "filter": "driver_id=mode2"
           }
         ]
       },
@@ -229,7 +238,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=mode"
+            "filter": "driver_id=mode2"
           }
         ]
       },
@@ -246,7 +255,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=multi"
+            "filter": "driver_id=multi2"
           }
         ]
       }
@@ -265,7 +274,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=mode"
+            "filter": "driver_id=mode2"
           }
         ]
       },
@@ -292,7 +301,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=multi"
+            "filter": "driver_id=multi2"
           }
         ]
       }
@@ -330,7 +339,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=virtual_switch"
+            "filter": "driver_id=virtual_switch2"
           }
         ]
       },{
@@ -371,7 +380,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=virtual_switch"
+            "filter": "driver_id=virtual_switch2"
           }
         ]
       },
@@ -388,7 +397,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=mode"
+            "filter": "driver_id=mode2"
           }
         ]
       },
@@ -405,7 +414,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=mode"
+            "filter": "driver_id=mode2"
           }
         ]
       },
@@ -421,7 +430,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=mode"
+            "filter": "driver_id=mode2"
           }
         ]
       },
@@ -437,7 +446,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=mode"
+            "filter": "driver_id=mode2"
           }
         ]
       },
@@ -464,7 +473,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=multi"
+            "filter": "driver_id=multi2"
           }
         ]
       }
@@ -472,7 +481,7 @@
   },
   "drivers": [
     {
-      "id": "virtual_switch",
+      "id": "virtual_switch2",
       "name": {
         "en": "Device",
         "nl": "Apparaat",
@@ -480,8 +489,8 @@
         "no": "Enhet"
       },
       "images": {
-        "large": "drivers/virtual_switch/assets/images/large.png",
-        "small": "drivers/virtual_switch/assets/images/small.png"
+        "large": "drivers/virtual_switch2/assets/images/large.png",
+        "small": "drivers/virtual_switch2/assets/images/small.png"
       },
       "class": "other",
       "capabilities": [
@@ -519,7 +528,7 @@
       ]
     },
     {
-      "id": "mode",
+      "id": "mode2",
       "name": {
         "en": "Mode",
         "nl": "Modus",
@@ -527,8 +536,8 @@
         "no": "Modus"
       },
       "images": {
-        "large": "drivers/mode/assets/images/large.png",
-        "small": "drivers/mode/assets/images/small.png"
+        "large": "drivers/mode2/assets/images/large.png",
+        "small": "drivers/mode2/assets/images/small.png"
       },
       "class": "other",
       "capabilities": [
@@ -569,7 +578,7 @@
       }
     },
     {
-      "id": "multi",
+      "id": "multi2",
       "deprecated": true,
       "name": {
         "en": "Multi-Mode",
@@ -578,8 +587,8 @@
         "no": "Multimodus"
       },
       "images": {
-        "large": "drivers/multi/assets/images/large.png",
-        "small": "drivers/multi/assets/images/small.png"
+        "large": "drivers/multi2/assets/images/large.png",
+        "small": "drivers/multi2/assets/images/small.png"
       },
       "class": "other",
       "capabilities": [

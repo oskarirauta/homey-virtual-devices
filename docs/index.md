@@ -1,4 +1,4 @@
-# Virtual Devices
+# Virtual Devices2
 
 * [Description](index)
 * [Sensors](sensor)

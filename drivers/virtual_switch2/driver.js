@@ -2,7 +2,7 @@
 
 const Homey = require('homey');
 const fs = require('fs');
-const DRIVER_LOCATION = "/app/com.oskarirauta.virtual2/drivers/virtual_switch/";
+const DRIVER_LOCATION = "/app/com.oskarirauta.virtual2/drivers/virtual_switch2/";
 
 class VirtualDriver2 extends Homey.Driver {
   onInit() {
